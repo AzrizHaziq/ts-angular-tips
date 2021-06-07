@@ -3,7 +3,6 @@
   <head>
     <meta charset="utf-8" />
     <title>Tips in Javascript and Angular</title>
-    <script type="module" src="/main.js"></script>
   </head>
 
   <body>
@@ -26,7 +25,7 @@
 
           <section data-markdown>
             <script type="text/template">
-              * Each of array built-ins function has its own purpose and do differently.<!-- .element: class="fragment" -->
+              * Each of array built-ins function has its own purpose and do differently.
               * ".forEach" is the most basic one since it just loop. <!-- .element: class="fragment" -->
               <div class="fragment">
 
@@ -35,7 +34,7 @@
                 let temp = []
 
                 arr.forEach(i => {
-                temp.push(i * 2)
+                  temp.push(i * 2)
                 })
 
                 temp: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
@@ -47,7 +46,7 @@
 
           <section data-markdown>
             <script type="text/template">
-              * we can mimic similar behaviour to ".filter" by using ".forEach"
+              * can we select certain item by using ".forEach"
 
               <div class="fragment">
 
@@ -56,9 +55,9 @@
                 const isEven = []
 
                 arr.forEach(i => {
-                if (i % 2 === 0) {
-                isEvent.push(i)
-                }
+                  if (i % 2 === 0) {
+                    isEvent.push(i)
+                  }
                 })
 
                 isEven: [2, 4, 6, 8, 10]
@@ -72,8 +71,8 @@
               <div class="fragment">
 
                 ```ts [1|2]
-                const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                const isEven = arr.filter(i => i % 2 === 0)
+                  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                  const isEven = arr.filter(i => i % 2 === 0)
                 ```
 
               </div>
@@ -91,7 +90,7 @@
                 const multiplierBy2 = []
 
                 arr.forEach(i => {
-                multiplierBy2.push(i * 2)
+                  multiplierBy2.push(i * 2)
                 })
 
                 multiplierBy2: [2, 4, 6, 8, 10, 12, 14, 16, 18, 20]
@@ -103,10 +102,11 @@
 
               <div class="fragment">
 
-                ```ts [1-2|3]
-                const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-                const multiplierBy2 = arr.map(i => i * 2)
-                multiplierBy2 : [2, 4, 6, 8, 10]
+                ```ts [1-2|4]
+                  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                  const multiplierBy2 = arr.map(i => i * 2)
+
+                  multiplierBy2 : [2, 4, 6, 8, 10]
                 ```
 
               </div>
@@ -117,10 +117,15 @@
             <script type="text/template">
               * As we seen with ".map", ".filter", it does return an array, while ".forEach" it return nothing.
               * So use ".map", ".filter" if you want to assign to something<!-- .element: class="fragment" -->
-              * There is one problem one. <!-- .element: class="fragment" -->
+            </script>
+          </section>
+
+          <section data-markdown>
+            <script type="text/template">
+              * There is one problem one.
               * input as array. <!-- .element: class="fragment" -->
               * output also is array. <!-- .element: class="fragment" -->
-              * what if we want to have object or boolean as our output? <!-- .element: class="fragment" -->
+              * what if we want to have object/boolean/number/string or anything else as our output? <!-- .element: class="fragment" -->
             </script>
           </section>
 
@@ -141,19 +146,19 @@
               <div class="fragment">
 
                 ```ts [1|10|3|4|6-8|3|12,13]
-                const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+                  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-                const { isEven, isOdd } = arr.reduce((acc, cur: number) => {
-                const { isEven, isOdd } = acc;
+                  const { isEven, isOdd } = arr.reduce((acc, cur: number) => {
+                    const { isEven, isOdd } = acc;
 
-                return cur % 2 === 0
-                ? { ...acc, isEven: [...isEven, cur] }
-                : { ...acc, isOdd: [...isOdd, cur] }
+                    return cur % 2 === 0
+                      ? { ...acc, isEven: [...isEven, cur] }
+                      : { ...acc, isOdd: [...isOdd, cur] }
 
-                }, { isEven: [], isOdd: [] });
+                  }, { isEven: [], isOdd: [] });
 
-                isOdd: [1, 3, 5, 7, 9]
-                isEven: [2, 4, 6, 8, 10]
+                  isOdd: [1, 3, 5, 7, 9]
+                  isEven: [2, 4, 6, 8, 10]
                 ```
 
               </div>
@@ -171,8 +176,8 @@
               <div class="fragment">
 
                 ```html
-                <!-- ❌ -->
-                <p>{{ format(number) }}</p>
+                  <!-- ❌ -->
+                  <p>{{ format(number) }}</p>
                 ```
 
               </div>
@@ -180,8 +185,8 @@
               <div class="fragment">
 
                 ```html
-                <!-- ✅ -->
-                <p>{{ number | format: 'options' }}</p>
+                  <!-- ✅ -->
+                  <p>{{ number | format: 'options' }}</p>
                 ```
 
               </div>
@@ -194,10 +199,10 @@
               <div class="fragment">
 
                 ```html
-                <!-- ❌ -->
-                <div *ngIf="isLoading">
-                  <cad-spinner></cad-spinner>
-                </div>
+                  <!-- ❌ -->
+                  <div *ngIf="isLoading">
+                    <cad-spinner></cad-spinner>
+                  </div>
                 ```
 
               </div>
@@ -206,9 +211,9 @@
               <div class="fragment">
 
                 ```html [1-3|1,3]
-                <div>
-                  <cad-spinner></cad-spinner>
-                </div>
+                  <div>
+                    <cad-spinner></cad-spinner>
+                  </div>
                 ```
 
               </div>
@@ -217,10 +222,10 @@
               <div class="fragment">
 
                 ```html [2-4| 3]
-                <!-- ✅ -->
-                <ng-container *ngIf="isLoading">
-                  <cad-spinner></cad-spinner>
-                </ng-container>
+                  <!-- ✅ -->
+                  <ng-container *ngIf="isLoading">
+                    <cad-spinner></cad-spinner>
+                  </ng-container>
                 ```
 
               </div>
@@ -230,9 +235,9 @@
               <div class="fragment">
 
                 ```html
-                <ng-container *ngFor="let i of [12, 3, 4, 5]">
-                  ...
-                </ng-container>
+                  <ng-container *ngFor="let i of [12, 3, 4, 5]">
+                    ...
+                  </ng-container>
                 ```
 
               </div>
@@ -256,22 +261,22 @@
               <div class="">
 
                 ```html
-                <!-- ❌ -->
-                <table>
-                  <tr>
-                    <ng-container *ngFor="let i of [1, 2, 3, 4]">
-                      <td>
-                        <div>
+                  <!-- ❌ -->
+                  <table>
+                    <tr>
+                      <ng-container *ngFor="let i of [1, 2, 3, 4]">
+                        <td>
                           <div>
-                            <p>
-                              <span>this is nested doom structure {{ i }}</span>
-                            </p>
+                            <div>
+                              <p>
+                                <span>this is nested doom structure {{ i }}</span>
+                              </p>
+                            </div>
                           </div>
-                        </div>
-                      </td>
-                    </ng-container>
-                  </tr>
-                </table>
+                        </td>
+                      </ng-container>
+                    </tr>
+                  </table>
 
                 ```
 
@@ -285,29 +290,29 @@
               <div class="">
 
                 ```html
-                <!-- ✅ -->
-                <table>
-                  <tr>
-                    <ng-container *ngFor="let i of [1, 2, 3, 4]">
-                      <td>
-                        <ng-container
-                          [ngTemplateOutlet]="innerComponentTemplate"
-                          [ngTemplateOutletContext]="{ index: i }"
-                        ></ng-container>
-                      </td>
-                    </ng-container>
-                  </tr>
-                </table>
+                  <!-- ✅ -->
+                  <table>
+                    <tr>
+                      <ng-container *ngFor="let i of [1, 2, 3, 4]">
+                        <td>
+                          <ng-container
+                            [ngTemplateOutlet]="innerComponentTemplate"
+                            [ngTemplateOutletContext]="{ index: i }"
+                          ></ng-container>
+                        </td>
+                      </ng-container>
+                    </tr>
+                  </table>
 
-                <ng-template let-i="index">
-                  <div>
+                  <ng-template let-i="index">
                     <div>
-                      <p>
-                        <span>this is nested doom structure {{ i }}</span>
-                      </p>
+                      <div>
+                        <p>
+                          <span>this is nested doom structure {{ i }}</span>
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                </ng-template>
+                  </ng-template>
 
                 ```
 
@@ -322,57 +327,55 @@
               * Its much easier to cancel subscription <!-- .element: class="fragment" -->
               * Previously you had to give a name and assign to "this.addSubscription"  <!-- .element: class="fragment" -->
 
-
               <div class="fragment">
 
-                ```ts
+                ```ts [1,11|2|9,10|4-7]
+                  export class BaseComponent implements OnDestroy {
+                    private isAlive$ = new Subject<void>();
 
-                export class BaseComponent implements OnDestroy {
-                private isAlive$ = new Subject<void>();
+                    public ngOnDestroy() {
+                      this.isAlive$.next();
+                      this.isAlive$.complete();
+                    }
 
-                                                    public ngOnDestroy() {
-                                                    this.isAlive$.next();
-                                                    this.isAlive$.complete();
-                                                    }
-
-                                                    public once = <T = unknown>(source: Observable<T>): Observable<T> => source.pipe(take(1));
-
-                                                                                                                      public unsubscribeOnDestroy = <T = unknown>(source: Observable<T>): Observable<T> =>
-                                                                                                                                                                                                        source.pipe(takeUntil(this.isAlive$));
-                                                                                                                                                                                                        }
-                                                                                                                                                                                                        ```
+                    once = (source) => source.pipe(take(1));
+                    unsubscribeOnDestroy = (source) => source.pipe(takeUntil(this.isAlive$));
+                  }
+                ```
 
               </div>
             </script>
           </section>
 
+          <!-- continue from rxjs -->
           <section data-markdown>
             <script type="text/template">
-              Previous one
+              ## How to use it:
+              Previous <!-- .element: class="fragment" -->
               <div class="fragment">
 
-                ```ts
-                const first$ = this.myService.getCurrentUser()..subscribe();
-                const second$ = this.myService.getCurrentUser().subscribe();
+                ```ts [1,2|4]
+                  const first$ = this.myService.getCurrentUser()..subscribe();
+                  const second$ = this.myService.getCurrentUser().subscribe();
 
-                this.addSubscription(first$, second$);
+                  this.addSubscription(first$, second$);
                 ```
 
               </div>
 
-              How to use the new method  <!-- .element: class="fragment" -->
+              New  <!-- .element: class="fragment" -->
               <div class="fragment">
 
-                ```ts
-                this.myService.getCurrentUser().pipe(
-                // wait until component destroy and then close subs
-                this.unsubscribeOnDestroy
-                ).subscribe();
+                ```ts [1,4,6,9|2,3,7,8]
+                  this.myService.getCurrentUser().pipe(
+                    // wait until component destroy and then close subs
+                    this.unsubscribeOnDestroy
+                  ).subscribe();
 
-                this.myService.getCurrentUser().pipe(
-                // only run once and then close subs
-                this.once
-                ).subscribe();
+                  this.myService.getCurrentUser().pipe(
+                    // only run once and then close subs
+                    this.once
+                  ).subscribe();
                 ```
 
               </div>
@@ -395,23 +398,23 @@
             <script type="text/template">
               <div class="">
 
-                ```ts
-                export class User {
-                this.age: number = 0;
-                this.fullName: string = '';
+                ```ts [1,16|2,3|5-7|9-11|13-15]
+                  export class User {
+                    this.age: number = 0;
+                    this.fullName: string = '';
 
-                setFullName(firstname: string, lastname: string): void {
-                this.fullName = `${firstname} ${lastname}`;
-                }
+                    setFullName(firstname: string, lastname: string): void {
+                      this.fullName = `${firstname} ${lastname}`;
+                    }
 
-                calculateAge() {
-                this.age = this.findDifferentInYear(this.age);
-                }
+                    calculateAge() {
+                      this.age = this.findDifferentInYear(this.age);
+                    }
 
-                private findDifferentInYear(userAge) {
-                return new Date() - userAge
-                }
-                }
+                    private findDifferentInYear(userAge) {
+                      return new Date() - userAge
+                    }
+                  }
                 ```
 
               </div>
@@ -426,40 +429,41 @@
               <div class="">
 
                 ```ts
-                export const findDifferentInYear = (userAge): number =>
-                new Date() - userAge
+                  export const findDifferentInYear = (userAge): number =>  {
+                    return new Date() - userAge
+                  }
                 ```
 
               </div>
 
               <div class="fragment">
 
-                ```ts
-                export class User {
-                this.age: number = 0;
-                this.fullName: string = '';
+                ```ts [10]
+                  export class User {
+                    this.age: number = 0;
+                    this.fullName: string = '';
 
-                setFullName(firstname: string, lastname: string): void {
-                this.fullName = `${firstname} ${lastname}`;
-                }
+                    setFullName(firstname: string, lastname: string): void {
+                      this.fullName = `${firstname} ${lastname}`;
+                    }
 
-                calculateAge() {
-                this.age = findDifferentInYear(this.age);
-                }
-                }
+                    calculateAge() {
+                      this.age = findDifferentInYear(this.age);
+                    }
+                  }
                 ```
 
               </div>
 
               <div class="fragment">
 
-                ```ts
-                describe('findDifferentInYear', () => {
-                it('should return 20', () => {
-                const res = findDifferentInYear(41);
-                expect(res).to.be.eq(20);
-                })
-                })
+                ```ts [1,2,5,6|3,4]
+                  describe('findDifferentInYear', () => {
+                    it('should return 20', () => {
+                      const res = findDifferentInYear(41);
+                      expect(res).to.be.eq(20);
+                    })
+                  })
                 ```
 
               </div>
@@ -467,10 +471,19 @@
           </section>
         </section>
 
+        <!-- Q & A -->
         <section>
-          <section data-markdown>## Q & A</section>
+          <section data-markdown>
+            <script type="text/template">
+              ## Q & A
+              * https://github.com/AzrizHaziq/ts-angular-tips
+              * https://ts-angular-tips.vercel.app
+            </script>
+          </section>
         </section>
       </div>
     </div>
   </body>
+
+  <script type="module" src="/main.js"></script>
 </html>
