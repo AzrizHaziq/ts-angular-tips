@@ -8,8 +8,6 @@ import Notes from 'reveal.js/plugin/notes/notes.esm';
 import Markdown from 'reveal.js/plugin/markdown/markdown.esm.js';
 import HighLight from 'reveal.js/plugin/highlight/highlight.esm';
 
-import * as md from './example.md';
-
 let deck = new Reveal({
   controls: true,
   progress: true,
