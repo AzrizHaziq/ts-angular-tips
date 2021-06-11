@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+.tag {
+  background: theme('colors.red.600');
+  padding: 2px 10px;
+  border-radius: 5px;
+  display: inline-block;
+  color: theme('colors.red.200');
+  @apply lowercase;
+  font-family: monospace;
+}
+
+.tag-2 {
+  @apply inline font-bold px-3 py-1 bg-blue-200 text-blue-700 rounded-full;
+}
+
+.tag-r {
+  @apply inline font-bold px-3 py-1 bg-red-200 text-red-700 rounded-full;
+}
+
+.tag-s {
+  @apply inline font-bold px-3 py-1 bg-green-200 text-green-700 rounded-full;
+}
