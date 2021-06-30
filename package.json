@@ -2,7 +2,7 @@
   "name": "ts-angular-tips",
   "version": "0.0.0",
   "scripts": {
-    "dev": "vite",
+    "dev": "NODE_ENV=development vite",
     "build": "vite build",
     "postbuild": "cp 1-js.md 2-angular.md 3-other.md 4-prettier.md ./dist/",
     "serve": "vite preview",
