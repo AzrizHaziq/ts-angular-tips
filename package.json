@@ -4,7 +4,7 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "postbuild": "cp example.md ./dist/",
+    "postbuild": "cp 1-js.md 2-angular.md 3-other.md 4-prettier.md ./dist/",
     "serve": "vite preview",
     "preview": "vite preview"
   },
