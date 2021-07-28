@@ -79,7 +79,7 @@ const temp = arr.map(i => i * 2)
 
 <ul>
 <li class='fragment'>Reduce line of code to <b>1</b></li>
-<li class='fragment'>We also avoid keep track of variables</li>
+<li class='fragment'>We also able to eliminate intermediate variable</li>
 <li class='fragment'>While <span class='tag'>.forEach</span> does not return any value, <br/><span class='tag'>.map</span> return an array</li>
 </ul>
 
@@ -133,8 +133,8 @@ const isEven = arr.filter(i => i % 2 === 0)
 
 * 3 key thing:  <!-- .element: class="fragment" -->
   * it need initial value <!-- .element: class="fragment" -->
-  * acc is accumulation <!-- .element: class="fragment" -->
-  * curr is current (current item in loop) <!-- .element: class="fragment" -->
+  <li class='fragment mb-2'><span class='tag'>acc</span> is accumulation </li>
+  <li class='fragment'><span class='tag'>curr</span> is current (current item in loop)</li>
 
 ------
 

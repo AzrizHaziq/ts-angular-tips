@@ -80,8 +80,8 @@ The same should be applied with looping:
 ### 2.3 Avoid deep nested html markup
 <div class='text-left'>
   <li class='text-left fragment'>for better readability and easy for in future refactoring</li>
-  <li class='text-left fragment'>prefer to use <span class="tag">ng-template</span></li>
-  <li class='text-left fragment'>use <span class="tag">[ngTemplateOutlet]</span> to pass template </li>
+  <li class='text-left mb-2 fragment'>prefer to use <span class="tag">ng-template</span></li>
+  <li class='text-left mb-2 fragment'>use <span class="tag">[ngTemplateOutlet]</span> to pass template </li>
   <li class='text-left fragment'>use <span class="tag">[ngTemplateOutletContext]</span> to pass data</li>
 </div>
 
@@ -187,4 +187,47 @@ this.myService.getCurrentUser().pipe(
  this.once
 ).subscribe();
 ```
+</div>
+
+------
+
+### 2.5 Leverage rxjs operators
+
+<div class="fragment">
+
+```ts [1,5| 2-4]
+this.myService.state().subcribe((state) => {
+  if (state !== null) {
+    // do some fancy things here
+  }
+})
+```
+
+</div>
+<div class="fragment">
+
+```ts [2,4,5,6|3,1]
+import {filter} from 'rxjs/operators'
+this.myService.state().pipe(
+  filter(Boolean)
+).subcribe((state) => {
+  // do some fancy things here
+})
+
+```
+
+</div>
+<div class="fragment">
+
+```ts [2,7|1,4,5,6]
+import {filter, tap} from 'rxjs/operators'
+
+this.myService.state().pipe(
+  filter(Boolean),
+  tap((state) => {
+    // do some fancy things here
+  })
+).subcribe()
+```
+
 </div>
